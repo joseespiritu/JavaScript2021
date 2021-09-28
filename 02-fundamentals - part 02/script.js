@@ -240,13 +240,13 @@ console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his bes
 
 
 // Objects Methods
-const jonas = {
+/* const jonas = {
     firstName: 'Jonas',
     lastName: 'Schmedtmann',
     birthYear: 1991,
     job: 'Teacher',
     friends: ['Michael', 'Peter', 'Steven'],
-    hasDriveLicense: true,
+    hasDriveLicense: true, */
     /* calcAge: function (birthYear) {
         return 2037 - birthYear;
     } */
@@ -254,7 +254,7 @@ const jonas = {
     //console.log(this);
     //    return 2037 - this.birthYear;
     //}
-    calcAge: function () {
+/*     calcAge: function () {
         this.age = 2037 - this.birthYear;
         return this.age;
     },
@@ -264,17 +264,17 @@ const jonas = {
 };
 
 console.log(jonas.calcAge());
-console.log(jonas.age);
+console.log(jonas.age); */
 //console.log(jonas['calcAge'](1991));
 
 //Challenge
 // "Jonas is a 46-year old techaer, and he has a/no driver's license." 
 
-console.log(jonas.getSummary());
+/* console.log(jonas.getSummary()); */
 
 
 // Coding Challenge #3
-const mark = {
+/* const mark = {
     fullName: 'Mark Miller',
     mass: 78,
     height: 1.69,
@@ -300,3 +300,9 @@ jhon.calcBMI();
 mark.bmi > jhon.bmi
     ? console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${jhon.fullName}'s (${jhon.bmi})!`)
     : console.log(`${jhon.fullName}'s BMI (${jhon.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`)
+ */
+
+// Iteration - The for loop
+for (let rep = 1; rep <= 20; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
+}
