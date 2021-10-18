@@ -92,30 +92,69 @@ const game = {
   }
 };
 
-// 1)
-// Console player scored and index
-const playersScored = Object.entries(game.scored);
-for (const [goal, playerName] of playersScored) {
-  console.log(`Goal ${Number(goal) + 1}: ${playerName}`);
+///////////////////////////
+// Sets
+const ordersSet = new Set([
+  'Pasta', 
+  'Pizza', 
+  'Pizza', 
+  'Risotto', 
+  'Pasta', 
+  'Pizza'
+]);
+
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) {
+  console.log(order);
 }
 
-// 2)
-// Calculate the average of Odd
-const oddsValues = Object.values(game.odds);
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
 
-let averageOdds = 0;
-for (const odd of oddsValues) {
-  averageOdds += odd;
-}
-averageOdds = averageOdds / oddsValues.length;
-console.log(averageOdds);
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size);
 
-// 3)
-// Print 3 odds in nice formatted way
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr}: ${odd}`);
-}
+console.log(new Set('jonasschmedtmann').size);
+
+/////////////////////////////////////////
+// CODING CHALLENGE #2
+// // 1)
+// // Console player scored and index
+// const playersScored = Object.entries(game.scored);
+// for (const [goal, playerName] of playersScored) {
+//   console.log(`Goal ${Number(goal) + 1}: ${playerName}`);
+// }
+
+// // 2)
+// // Calculate the average of Odd
+// const oddsValues = Object.values(game.odds);
+
+// let averageOdds = 0;
+// for (const odd of oddsValues) {
+//   averageOdds += odd;
+// }
+// averageOdds = averageOdds / oddsValues.length;
+// console.log(averageOdds);
+
+// // 3)
+// // Print 3 odds in nice formatted way
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr}: ${odd}`);
+// }
 
 
 // Property names
