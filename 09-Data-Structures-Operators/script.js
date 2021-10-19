@@ -92,38 +92,81 @@ const game = {
   }
 };
 
-const question = new Map([
-  ['question', 'What is the best programing language in the world?'],
-  [1,'C'],
-  [2,'Java'],
-  [3,'JavaScript'], 
-  ['correct', 3], 
-  [true, 'Correct 🎉'],
-  [false, 'Try again!'],
+////////////////////////////////////
+// Coding Challenge #3
+const gameEvents = new Map([
+  [17, 'GOAL'],
+  [36, 'Substitution'],
+  [47, 'GOAL'],
+  [61, 'Substitution'],
+  [64, 'Yellow Card'],
+  [69, 'Red Card'],
+  [70, 'Substitution'],
+  [72, 'Substitution'],
+  [76, 'GOAL'],
+  [80, 'GOAL'],
+  [92, 'Yellow Card'],
 ]);
-console.log(question);
 
-// Convert object to map
-console.log(Object.entries(openingHours));
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
+// 1) array of events with no duplicates
+const events = [...new Set(gameEvents.values())];
+console.log(events);
 
-// Quiz App
-console.log(question.get('question'));
-for (const [key, value] of question) {
-  if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// 2) Delete Yellow Card 64 from map
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3) print to the console the average of the game
+console.log(`An event happend, on avergae, every ${90 /gameEvents.size} minutes`);
+
+const time = [...gameEvents.keys()].pop();
+console.log(time);
+console.log(`An event happend, on avergae, every ${time /gameEvents.size} minutes`);
+
+
+// 4) Loop over events FIRST HALF, SECOND HALF
+for (const [key, value] of gameEvents) {
+  if (key <= 45) {
+    console.log(`[FIRST HALF] ${key}: ${value}`);
+  } else {
+    console.log(`[SECOND HALF] ${key}: ${value}`);
+  }
 }
-// const answer = Number(prompt('Your answer'));
-const answer = 3;
-console.log(answer);
 
-console.log(question.get(question.get('correct') === answer));
+////////////////////////////////////
+// Maps
+// const question = new Map([
+//   ['question', 'What is the best programing language in the world?'],
+//   [1,'C'],
+//   [2,'Java'],
+//   [3,'JavaScript'], 
+//   ['correct', 3], 
+//   [true, 'Correct 🎉'],
+//   [false, 'Try again!'],
+// ]);
+// console.log(question);
 
-// Convert map to array
-console.log([...question]);
-console.log(question.entries());
-console.log([...question.keys()]);
-console.log([...question.values()]);
+// // Convert object to map
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
+
+// // Quiz App
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+// // const answer = Number(prompt('Your answer'));
+// const answer = 3;
+// console.log(answer);
+
+// console.log(question.get(question.get('correct') === answer));
+
+// // Convert map to array
+// console.log([...question]);
+// console.log(question.entries());
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
 
 /////////////////////////////////
 // Maps: Fundamentals
