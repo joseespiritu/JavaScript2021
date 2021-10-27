@@ -163,3 +163,28 @@ displayMovements(account1.movements);
 // currenciesUnique.forEach(function (value, _, map) {
 //   console.log(`${value}: ${value}`);
 // });
+
+////////////////////////////
+// Coding Challenge #1
+// Test Data 1
+const dogsJulia = [3, 5, 2, 12, 7];
+const dogsKate = [4, 1, 15, 8, 3];
+
+// Test Data 2
+// const dogsJulia = [9, 16, 6, 8, 3];
+// const dogsKate = [10, 5, 6, 1, 4];
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = dogsJulia.slice();
+  dogsJuliaCorrected.splice(0, 1);
+  dogsJuliaCorrected.splice(-2);
+  const ageDogs = [...dogsJuliaCorrected, ...dogsKate];
+  ageDogs.forEach(function (ageDog, i) {
+    const age =
+      ageDog >= 3 ? `an adult, and is ${ageDog} years old` : 'still a puppy 🐶';
+
+    console.log(`Dog number ${i + 1} is ${age}`);
+  });
+};
+
+checkDogs(dogsJulia, dogsKate);
