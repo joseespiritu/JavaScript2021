@@ -167,24 +167,53 @@ displayMovements(account1.movements);
 ////////////////////////////
 // Coding Challenge #1
 // Test Data 1
-const dogsJulia = [3, 5, 2, 12, 7];
-const dogsKate = [4, 1, 15, 8, 3];
+// const dogsJulia = [3, 5, 2, 12, 7];
+// const dogsKate = [4, 1, 15, 8, 3];
 
 // Test Data 2
 // const dogsJulia = [9, 16, 6, 8, 3];
 // const dogsKate = [10, 5, 6, 1, 4];
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCorrected = dogsJulia.slice();
-  dogsJuliaCorrected.splice(0, 1);
-  dogsJuliaCorrected.splice(-2);
-  const ageDogs = [...dogsJuliaCorrected, ...dogsKate];
-  ageDogs.forEach(function (ageDog, i) {
-    const age =
-      ageDog >= 3 ? `an adult, and is ${ageDog} years old` : 'still a puppy 🐶';
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCorrected = dogsJulia.slice();
+//   dogsJuliaCorrected.splice(0, 1);
+//   dogsJuliaCorrected.splice(-2);
+//   const ageDogs = [...dogsJuliaCorrected, ...dogsKate];
+//   ageDogs.forEach(function (ageDog, i) {
+//     const age =
+//       ageDog >= 3 ? `an adult, and is ${ageDog} years old` : 'still a puppy 🐶';
 
-    console.log(`Dog number ${i + 1} is ${age}`);
-  });
-};
+//     console.log(`Dog number ${i + 1} is ${age}`);
+//   });
+// };
 
-checkDogs(dogsJulia, dogsKate);
+// checkDogs(dogsJulia, dogsKate);
+
+/////////////////////////
+// The Map Method
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+const movementsUSD = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
+
+const movementUSDArr = movements.map(mov => mov * eurToUsd);
+console.log(movementUSDArr);
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1} You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+
+console.log(movementsDescriptions);
