@@ -356,33 +356,70 @@ btnSort.addEventListener('click', function (e) {
 
 ////////////////////////////
 // bigInt - ES2020
-console.log(2 ** 53 - 1);
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(2 ** 53 + 1);
-console.log(2 ** 53 + 2);
-console.log(2 ** 53 + 3);
-console.log(2 ** 53 + 4);
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+// console.log(2 ** 53 + 1);
+// console.log(2 ** 53 + 2);
+// console.log(2 ** 53 + 3);
+// console.log(2 ** 53 + 4);
 
-console.log(546666666666666155146889787456113314n);
-console.log(BigInt(561174));
+// console.log(546666666666666155146889787456113314n);
+// console.log(BigInt(561174));
 
-// Operations
-console.log(10000n + 10000n);
-console.log(165118465161651514151n * 100000000n);
-// console.log(Math.sqrt(16n));
+// // Operations
+// console.log(10000n + 10000n);
+// console.log(165118465161651514151n * 100000000n);
+// // console.log(Math.sqrt(16n));
 
-const huge = 651689415612131556n;
-const num = 23;
-console.log(huge * BigInt(num));
+// const huge = 651689415612131556n;
+// const num = 23;
+// console.log(huge * BigInt(num));
 
-// Exceptions
-console.log(20n > 15);
-console.log(20n === 20);
-console.log(typeof 20n);
-console.log(20n == '20');
+// // Exceptions
+// console.log(20n > 15);
+// console.log(20n === 20);
+// console.log(typeof 20n);
+// console.log(20n == '20');
 
-console.log(huge + ' is REALLY big!!!');
+// console.log(huge + ' is REALLY big!!!');
 
-// Divisions
-console.log(11n / 3n);
-console.log(10 / 3);
+// // Divisions
+// console.log(11n / 3n);
+// console.log(10 / 3);
+
+///////////////////////////
+// Dates
+
+// Create a date
+// const now = new Date();
+// console.log(now);
+
+// console.log(new Date('Nov 07 2021 20:37:47'));
+// console.log(new Date('December 24, 2015'));
+// console.log(new Date(account1.movementsDates[0]));
+
+// console.log(new Date(2037, 10, 19, 15, 23, 5));
+// console.log(new Date(2037, 10, 31));
+
+// console.log(new Date(0));
+// console.log(new Date(3 * 24 * 60 * 60 * 1000)); // Days to milliseconds
+
+// Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString()); // TO SAVE DATES IN STRING
+console.log(future.getTime()); // MILLISECONDS -> timestamp
+
+console.log(new Date(2142278580000));
+
+console.log(Date.now());
+
+future.setFullYear(2040);
+console.log(future);
