@@ -125,13 +125,15 @@ btnScrollTo.addEventListener('click', function (e) {
 
   console.log('Current Scroll (X/Y)', window.pageXOffset, window.pageYOffset);
 
-  console.log('height/width viewport',
+  console.log(
+    'height/width viewport',
     document.documentElement.clientHeight,
-    document.documentElement.clientWidth);
+    document.documentElement.clientWidth
+  );
 
   // Scrolling
   // window.scrollTo(
-  //   s1coords.left + window.pageXOffset, 
+  //   s1coords.left + window.pageXOffset,
   //   s1coords.top + window.pageYOffset
   // );
 
@@ -143,3 +145,19 @@ btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+const h1 = document.querySelector('h1');
+
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading :D');
+
+  // h1.removeEventListener('mouseenter', alertH1);
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
+// };
