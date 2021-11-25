@@ -168,25 +168,47 @@ jessica.greet();
 // 3. CLasses are executed in strict mode
 
 const walter = new PersonCl('Walter white', 1965);
-
 PersonCl.hey();
 
 /////////////////////////////
 // Getters & Setters
-const account = {
-  owner: 'jonas',
-  movements: [200, 530, 120, 300],
+// const account = {
+//   owner: 'jonas',
+//   movements: [200, 530, 120, 300],
 
-  get latest() {
-    return this.movements.slice(-1).pop();
+//   get latest() {
+//     return this.movements.slice(-1).pop();
+//   },
+
+//   set latest(mov) {
+//     this.movements.push(mov);
+//   },
+// };
+
+// console.log(account.latest);
+
+// account.latest = 50;
+// console.log(account.movements);
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
   },
 
-  set latest(mov) {
-    this.movements.push(mov);
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
   },
 };
 
-console.log(account.latest);
+const steven = Object.create(PersonProto);
+steven.name = 'Steven';
+steven.birthYear = 2002;
+steven.calcAge();
 
-account.latest = 50;
-console.log(account.movements);
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1979);
+sarah.calcAge();
+console.log(sarah);
