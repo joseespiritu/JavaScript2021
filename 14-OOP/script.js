@@ -1,5 +1,6 @@
 'use strict';
 
+// Static Methods
 // const Person = function (firstName, birthYear) {
 //   // Instance properties
 //   this.firstName = firstName;
@@ -21,12 +22,15 @@
 
 // const matilda = new Person('Matilda', 2017);
 // const jack = new Person('Jack', 1975);
-// console.log(matilda, jack);
-
-// const jay = 'Jay';
 
 // console.log(jonas instanceof Person);
-// console.log(jay instanceof Person);
+
+// Person.hey = function () {
+//   console.log('Hey there 👋');
+//   console.log(this);
+// };
+
+// Person.hey();
 
 // // Prototypes
 // console.log(Person.prototype);
@@ -140,6 +144,11 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // static method
+  static hey() {
+    console.log('Hey there 👋');
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -159,6 +168,8 @@ jessica.greet();
 // 3. CLasses are executed in strict mode
 
 const walter = new PersonCl('Walter white', 1965);
+
+PersonCl.hey();
 
 /////////////////////////////
 // Getters & Setters
