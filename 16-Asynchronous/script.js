@@ -158,6 +158,34 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 //     });
 // };
 
+///////////////////////////////////////
+// Coding challenge #1
+// Test coordinates
+// 1)
+// let lat = 52.508;
+// let lng = 13.381;
+// 2)
+// let lat = 19.037;
+// let lng = 72.873;
+// 3)
+// let lat = -33.933;
+// let lng = 18.474;
+let lat;
+let lng;
+
+const whereAmI = function (lat, lng) {
+  // Reverse Geocoding
+  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(`You're in ${data.region}, ${data.state}`);
+      getCountryData(data.country);
+    })
+    .catch(err => {
+      if (err.status === 403) throw new Error('Only 3 request per minute');
+    });
+};
+
 const getCountryData = country => {
   // Country 1
   getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found')
@@ -184,7 +212,11 @@ const getCountryData = country => {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('portugal');
+  navigator.geolocation.getCurrentPosition(location => {
+    lat = location.coords.latitude;
+    lng = location.coords.longitude;
+    whereAmI(lat, lng);
+  });
 });
 
-getCountryData('australia');
+// getCountryData('australia');
