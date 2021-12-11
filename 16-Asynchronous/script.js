@@ -170,21 +170,21 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 // 3)
 // let lat = -33.933;
 // let lng = 18.474;
-let lat;
-let lng;
+// let lat;
+// let lng;
 
-const whereAmI = function (lat, lng) {
-  // Reverse Geocoding
-  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(`You're in ${data.region}, ${data.state}`);
-      getCountryData(data.country);
-    })
-    .catch(err => {
-      if (err.status === 403) throw new Error('Only 3 request per minute');
-    });
-};
+// const whereAmI = function (lat, lng) {
+//   // Reverse Geocoding
+//   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(`You're in ${data.region}, ${data.state}`);
+//       getCountryData(data.country);
+//     })
+//     .catch(err => {
+//       if (err.status === 403) throw new Error('Only 3 request per minute');
+//     });
+// };
 
 const getCountryData = country => {
   // Country 1
@@ -212,11 +212,20 @@ const getCountryData = country => {
 };
 
 btn.addEventListener('click', function () {
-  navigator.geolocation.getCurrentPosition(location => {
-    lat = location.coords.latitude;
-    lng = location.coords.longitude;
-    whereAmI(lat, lng);
-  });
+  // navigator.geolocation.getCurrentPosition(location => {
+  //   lat = location.coords.latitude;
+  //   lng = location.coords.longitude;
+  //   whereAmI(lat, lng);
+  // });
 });
 
 // getCountryData('australia');
+
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 1000; i++) {}
+  console.log(res);
+});
+console.log('Test end');
