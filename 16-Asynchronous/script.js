@@ -252,32 +252,81 @@ const getCountryData = country => {
 // Promise.resolve('abc').then(x => console.log(x));
 // Promise.reject(new Error('Problem!')).catch(x => console.error(x));
 
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    // navigator.geolocation.getCurrentPosition(
-    //   position => resolve(position),
-    //   err => reject(err)
-    // );
-    navigator.geolocation.getCurrentPosition(resolve, reject);
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     // navigator.geolocation.getCurrentPosition(
+//     //   position => resolve(position),
+//     //   err => reject(err)
+//     // );
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
+
+// getPosition().then(pos => console.log(pos));
+
+// const whereAmI = function () {
+//   getPosition()
+//     .then(pos => {
+//       const { latitude: lat, longitude: lng } = pos.coords;
+//       return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(`You're in ${data.region}, ${data.state}`);
+//       getCountryData(data.country);
+//     })
+//     .catch(err => {
+//       if (err.status === 403) throw new Error('Only 3 request per minute');
+//     });
+// };
+
+// btn.addEventListener('click', whereAmI);
+
+///////////////////////////////////////
+// Coding challenge #2
+
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
   });
 };
 
-getPosition().then(pos => console.log(pos));
+const imgContainer = document.querySelector('.images');
 
-const whereAmI = function () {
-  getPosition()
-    .then(pos => {
-      const { latitude: lat, longitude: lng } = pos.coords;
-      return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(`You're in ${data.region}, ${data.state}`);
-      getCountryData(data.country);
-    })
-    .catch(err => {
-      if (err.status === 403) throw new Error('Only 3 request per minute');
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+    img.src = imgPath;
+
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
     });
+
+    img.addEventListener('error', function () {
+      reject(new Error('image not found'));
+    });
+  });
 };
 
-btn.addEventListener('click', whereAmI);
+let currentImg;
+
+createImage('./img/img-1.jpg')
+  .then(img => {
+    currentImg = img;
+    console.log('Image 1 loaded');
+    return wait(2);
+  })
+  .then(() => {
+    currentImg.style.display = 'none';
+    return createImage('./img/img-2.jpg');
+  })
+  .then(img => {
+    currentImg = img;
+    console.log('Image 2 loaded');
+    return wait(2);
+  })
+  .then(() => {
+    currentImg.style.display = 'none';
+  })
+  .catch(err => console.log(err));
