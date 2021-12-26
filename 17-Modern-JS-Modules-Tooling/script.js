@@ -82,7 +82,8 @@ console.log(cart);
 // // Import
 // const { addToCart } = require('./shoppingCart.js');
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -98,3 +99,7 @@ const state = {
 
 const stateDeepClone = cloneDeep(state);
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
